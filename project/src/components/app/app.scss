@@ -1,4 +1,30 @@
 #app {
-    font-size: 20px;
-    color: $basic_color;
+  display: flex;
+  flex-direction: column;
+
+  height: 100vh;
+  min-width: 280px;
+
+  font-family: $basic_font;
+  font-weight: 400;
+
+  color: $basic_color;
+
+  @include font($main-size, $main-size);
+}
+
+.wrapper {
+  box-sizing: border-box;
+  min-width: 280px;
+  width: 87.5%;
+  margin: 0 auto;
+
+  @media (min-width: $tablet-width) {
+    min-width: 708px;
+    width: 92.2%;
+  }
+
+  @media (min-width: $desktop-width) {
+    width: 1220px;
+  }
 }

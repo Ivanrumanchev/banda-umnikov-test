@@ -1,5 +1,18 @@
 <template>
   <a href="/">
-    <img src="@/assets/img/logo.svg" width="60" height="40">
+    <img :class="[$style.logo, sizeClass]" src="@/assets/img/logo.svg" >
   </a>
 </template>
+
+<script>
+export default {
+  name: 'logo',
+  props: {
+    sizeClass: String,
+  },
+};
+</script>
+
+<style module lang="scss">
+  @import '@/components/Logo/Logo.scss';
+</style>

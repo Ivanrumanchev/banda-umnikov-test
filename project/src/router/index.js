@@ -1,8 +1,5 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Home from '../views/Home.vue';
-import Login from '../views/Login.vue';
-import Favorites from '../views/Favorites.vue';
 
 Vue.use(VueRouter);
 
@@ -10,17 +7,20 @@ const routes = [
   {
     path: '/',
     name: 'Home',
-    component: Home,
+    meta: { layout: 'main' },
+    component: () => import('@/views/Home/Home.vue'),
   },
   {
     path: '/login',
     name: 'Login',
-    component: Login,
+    meta: { layout: 'empty' },
+    component: () => import('@/views/Login/Login.vue'),
   },
   {
     path: '/favorites',
     name: 'Favorites',
-    component: Favorites,
+    meta: { layout: 'main' },
+    component: () => import('@/views/Favorites/Favorites.vue'),
   },
 ];
 

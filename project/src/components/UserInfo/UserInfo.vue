@@ -1,17 +1,25 @@
 <template>
-  <section class="user-info">
-    <h2 class="visually-hidden">
-      Информация о пользователе
-    </h2>
+  <section :class="$style.userInfo">
+    <div :class="$style.wrapper">
+      <h2 class="visually-hidden">
+        Информация о пользователе
+      </h2>
 
-    <div class="user-info__avatar">
-      <img src="" alt="Аватар">
+      <div :class="$style.avatar">
+        <img :class="$style.avatarImg" src="@/assets/img/user.jpg" alt="Аватар" width="140">
+      </div>
+
+      <ul :class="$style.infoList">
+        <li :class="$style.infoItem">Boba Fett</li>
+
+        <li :class="$style.infoItem">18 лет</li>
+
+        <li :class="$style.infoItem">Developer</li>
+      </ul>
     </div>
-
-    <ul class="user-info__list">
-      <li class="user-info__name">Boba Fett</li>
-      <li class="user-info__age">18</li>
-      <li class="user-info__job">Developer</li>
-    </ul>
   </section>
 </template>
+
+<style module lang="scss">
+  @import '@/components/UserInfo/UserInfo.scss';
+</style>

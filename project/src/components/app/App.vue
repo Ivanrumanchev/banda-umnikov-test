@@ -1,26 +1,28 @@
 <template>
   <div id="app">
-    <Header />
-    <router-view/>
+    <component :is="layout">
+      <router-view />
+    </component>
   </div>
 </template>
 
 <script>
-import Header from '@/components/Header/Header.vue';
+import EmptyLayout from '@/layouts/EmptyLayout.vue';
+import MainLayout from '@/layouts/MainLayout.vue';
 
 export default {
   components: {
-    Header,
+    EmptyLayout,
+    MainLayout,
+  },
+  computed: {
+    layout() {
+      return `${this.$route.meta.layout || 'empty'}-layout`;
+    },
   },
 };
 </script>
 
 <style lang="scss">
-  // @import style from '@/app.scss';
-  @import '@/components/app/app.scss';
-  // #app {
-  //   // color: $basic_color;
-  //   color: $basic_color;
-  //   // color: red;
-  // }
+  @import '@/components/app/App.scss';
 </style>

@@ -1,37 +1,22 @@
 <template>
   <header :class="$style.header">
-    <div class="header__wrapper">
-      <Logo class="header__logo" />
+    <div class="wrapper" :class="$style.wrapper">
+      <Logo :class="$style.logo" :size-class="$style.logoHeader" />
 
-      <nav class="main-nav main-nav--closed">
-        <button class="main-nav__toggle" type="button">
-          <span class="visually-hidden">Открыть меню</span>
-        </button>
-
-        <ul class="main-nav__list">
-          <li class="main-nav__item">
-            <a href="/">Главная</a>
-          </li>
-
-          <li class="main-nav__item">
-            <a href="/favorites">Избранное</a>
-          </li>
-
-          <li class="main-nav__item">
-            <a href="/login">Выход</a>
-          </li>
-        </ul>
-      </nav>
+      <MainNav />
     </div>
   </header>
 </template>
 
 <script>
 import Logo from '@/components/Logo/Logo.vue';
+import MainNav from '@/components/MainNav/MainNav.vue';
 
 export default {
+  name: 'header',
   components: {
     Logo,
+    MainNav,
   },
 };
 </script>

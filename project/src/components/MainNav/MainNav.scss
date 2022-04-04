@@ -1,0 +1,155 @@
+.toggle {
+  position: absolute;
+  top: 0%;
+  right: 0%;
+  padding: 0;
+
+  display: block;
+  width: 50px;
+  height: 50px;
+
+  background-color: $main_theme_color;
+  border: none;
+  cursor: pointer;
+
+  @media (min-width: $tablet-width) {
+    display: none;
+  }
+}
+
+.navClosed .toggle::before {
+  content: "";
+  position: absolute;
+  z-index: 3;
+  top: 22px;
+  right: 26px;
+
+  width: 24px;
+  height: 1.5px;
+
+  background-color: $basic_color;
+  box-shadow: 0 8px 0 $basic_color, 0 16px 0 $basic_color;
+}
+
+.navClosed .toggle:active::before {
+  opacity: 0.3;
+}
+
+.navOpened .toggle {
+  &::before,
+  &::after {
+    content: "";
+    position: absolute;
+    z-index: 3;
+    top: 28px;
+    right: 22px;
+    width: 24px;
+    height: 1.5px;
+    background-color: $basic_color;
+  }
+
+  &::before {
+    transform: rotate(45deg);
+    box-shadow: none;
+  }
+
+  &::after {
+    transform: rotate(-45deg);
+  }
+
+  &:active::before,
+  &:active::after {
+    opacity: 0.3;
+  }
+}
+
+@media (max-width: $mobile-width-only) {
+  .navClosed .navItem {
+    display: none;
+  }
+
+  .navOpened .navList {
+    position: absolute;
+    top: 65px;
+    left: 0;
+    z-index: 10;
+    background-color: $main_theme_color;
+    width: 100%;
+  }
+}
+
+.navList {
+  padding: 0;
+  margin: 0;
+  text-transform: uppercase;
+  list-style: none;
+
+  font-weight: 600;
+
+  @media (min-width: $tablet-width) {
+    display: flex;
+    flex: 1;
+    flex-wrap: wrap;
+    justify-content: flex-end;
+    min-width: 440px;
+
+    @include font(1.3em, 1em);
+  }
+}
+
+.navItem {
+  z-index: 2;
+  position: relative;
+  text-align: center;
+
+  @media (max-width: $mobile-width-only) {
+    display: block;
+    padding-left: 20px;
+    padding-right: 20px;
+    border-bottom: 1px solid $border_color;
+    min-height: 65px;
+  }
+
+  &:first-child {
+    @media (max-width: $mobile-width-only) {
+      border-top: 1px solid $border_color;
+    }
+  }
+
+  a {
+    position: relative;
+    padding-top: 22px;
+    padding-bottom: 24px;
+    display: block;
+    box-sizing: border-box;
+    min-height: 65px;
+    text-decoration: none;
+    color: $basic_color;
+    word-wrap: break-word;
+
+    @include font(1.5em, 1em);
+
+    &:hover {
+      opacity: 0.6;
+    }
+
+    &:active {
+      opacity: 0.3;
+    }
+
+    @media (min-width: $tablet-width) {
+      min-height: 65px;
+      display: flex;
+      align-items: flex-end;
+      padding-top: 0;
+      padding-bottom: 10px;
+      margin-left: 36px;
+    }
+  }
+}
+
+.active a {
+  @media (min-width: $tablet-width) {
+    border-bottom: 1px solid darken($border_color, 20%);
+  }
+}

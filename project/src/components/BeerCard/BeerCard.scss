@@ -1,0 +1,44 @@
+.card {
+  margin: 12px 0;
+  padding: 10px;
+
+  border: 1px solid $border_color;
+  border-radius: 5px;
+  background-color: $main_theme_color;
+
+  @media(min-width: $tablet-width) {
+    margin: 16px 0;
+  }
+}
+
+.cardsList {
+  margin: 0;
+}
+
+.category {
+  margin-bottom: 4px;
+
+  font-weight: 600;
+
+  @include font(1.1em, 1em);
+
+  @media(min-width: $tablet-width) {
+    margin-bottom: 6px;
+
+    @include font(1.3em, 1em);
+  }
+}
+
+.description {
+  margin-bottom: 10px;
+
+  @media(min-width: $tablet-width) {
+    margin-bottom: 16px;
+
+    @include font(1.3em, 1em);
+  }
+}
+
+.description:last-child {
+  margin-bottom: 0;
+}

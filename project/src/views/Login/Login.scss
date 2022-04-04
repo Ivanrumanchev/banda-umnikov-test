@@ -1,0 +1,44 @@
+.main {
+  min-width: 320px;
+  background-color: $background_special;
+  flex-grow: 1;
+}
+
+.wrapper {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.logo {
+  margin: auto;
+}
+
+.logoLogin {
+  width: 210px;
+  height: 150px;
+
+  @media(min-width: $tablet-width) {
+    width: 280px;
+    height: 200px;
+  }
+}
+
+.begin {
+  padding: 10px;
+  margin: auto;
+
+  border: 1px solid $basic_color;
+  border-radius: 6px;
+  background-color: $main_theme_color;
+
+  color: $basic_color;
+  text-decoration: none;
+
+  @include font(1.3em, 1em);
+
+  @media(min-width: $tablet-width) {
+
+    @include font(2.5em, 1em);
+  }
+}

@@ -5,27 +5,23 @@
     </h2>
 
     <button
-      class="next"
+      :class="$style.button"
       type="button"
       name="next"
     >
-      Next
+      Давай другое!
     </button>
 
     <button
-      class="favorites"
-      type="button"
-      name="favorites"
-    >
-      Favorites
-    </button>
-
-    <button
-      class="like"
+     :class="$style.button"
       type="button"
       name="like"
     >
-      Like
+      В избранное
     </button>
   </section>
 </template>
+
+<style module lang="scss">
+  @import '@/components/BeerInfoControls/BeerInfoControls.scss';
+</style>
