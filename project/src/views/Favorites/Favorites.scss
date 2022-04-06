@@ -11,7 +11,7 @@
   padding-bottom: 5px;
   margin: 0;
 
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid $basic_color;
 
   font-weight: 600;
 
@@ -21,5 +21,21 @@
     padding-bottom: 10px;
 
     @include font(2.5em, 1em);
+  }
+}
+
+.favoritesList {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.empty {
+  font-weight: 600;
+
+  @include font(1.1em, 1em);
+
+  @media(min-width: $tablet-width) {
+    @include font(1.3em, 1em);
   }
 }

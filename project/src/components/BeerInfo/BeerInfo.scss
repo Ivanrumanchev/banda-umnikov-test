@@ -2,7 +2,7 @@
   padding-top: 20px;
 
   @media(min-width: $tablet-width) {
-    padding-top: 10px;
+    padding-top: 4px;
   }
 }
 
@@ -11,7 +11,7 @@
   padding-bottom: 5px;
   margin: 0;
 
-  border-bottom: 2px solid black;
+  border-bottom: 2px solid $basic_color;
 
   font-weight: 600;
 

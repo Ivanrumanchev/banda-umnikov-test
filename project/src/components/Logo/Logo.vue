@@ -1,7 +1,5 @@
 <template>
-  <a href="/">
-    <img :class="[$style.logo, sizeClass]" src="@/assets/img/logo.svg" >
-  </a>
+  <img :class="[$style.logo, sizeClass]" src="@/assets/img/logo.svg" >
 </template>
 
 <script>

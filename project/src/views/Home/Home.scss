@@ -4,6 +4,10 @@
   min-width: 320px;
   background-color: $background_special;
   flex-grow: 1;
+
+  @media (min-width: $tablet-width) {
+    padding-top: 30px;
+  }
 }
 
 .wrapper {

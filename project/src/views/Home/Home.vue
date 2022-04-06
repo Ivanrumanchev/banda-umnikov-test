@@ -2,7 +2,9 @@
   <main :class="$style.main">
     <div class="wrapper" :class="$style.wrapper">
       <h1 class="visually-hidden">Выбор пива</h1>
+
       <UserInfo :class="$style.user" />
+
       <BeerInfo :class="$style.beer" />
     </div>
   </main>

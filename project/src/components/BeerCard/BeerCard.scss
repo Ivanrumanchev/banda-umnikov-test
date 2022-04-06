@@ -1,4 +1,5 @@
 .card {
+  position: relative;
   margin: 12px 0;
   padding: 10px;
 
@@ -41,4 +42,25 @@
 
 .description:last-child {
   margin-bottom: 0;
+}
+
+.errorMessage {
+  margin: 0;
+  margin-top: 5px;
+  color: $error_color;
+}
+
+.favorite {
+  position: absolute;
+  top: 0;
+  right: 0;
+  background-color: $button_remove_color;
+  color: $main_theme_color;
+  cursor: pointer;
+
+  @include font(0.9em, 1em);
+
+  @media(min-width: $tablet-width) {
+    @include font(1.3em, 1em);
+  }
 }

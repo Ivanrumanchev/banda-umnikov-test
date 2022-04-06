@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  margin: 10px;
+  width: 100%;
+  height: 100%;
+}
+
+.loader {
+  display: inline-block;
+  margin: auto;
+  width: 133px;
+  height: 133px;
+
+  @media(min-width: $tablet-width) {
+    width: 175px;
+    height: 175px;
+  }
+}

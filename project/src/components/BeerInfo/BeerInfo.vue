@@ -4,13 +4,14 @@
       Пиво на сегодня
     </h2>
 
-    <BeerCard />
+    <BeerCard :beer="beer" :status="status" />
 
     <BeerInfoControls />
   </section>
 </template>
 
 <script>
+import { mapGetters } from 'vuex';
 import BeerCard from '@/components/BeerCard/BeerCard.vue';
 import BeerInfoControls from '@/components/BeerInfoControls/BeerInfoControls.vue';
 
@@ -20,6 +21,31 @@ export default {
     BeerCard,
     BeerInfoControls,
   },
+  computed: {
+    ...mapGetters([
+      'beerBrand',
+      'beerName',
+      'beerAlcohol',
+      'beerFavorite',
+      'beerLoading',
+      'beerError',
+    ]),
+    beer() {
+      return {
+        brand: this.beerBrand,
+        name: this.beerName,
+        alcohol: this.beerAlcohol,
+        isFavorite: this.beerFavorite,
+      };
+    },
+    status() {
+      return {
+        loading: this.beerLoading,
+        error: this.beerError,
+      };
+    },
+  },
+
 };
 </script>
 

@@ -13,7 +13,7 @@ import Logo from '@/components/Logo/Logo.vue';
 import MainNav from '@/components/MainNav/MainNav.vue';
 
 export default {
-  name: 'header',
+  name: 'header-component',
   components: {
     Logo,
     MainNav,
@@ -22,5 +22,5 @@ export default {
 </script>
 
 <style module lang="scss">
-  @import '@/components/Header/Header.scss';
+  @import '@/components/HeaderComponent/HeaderComponent.scss';
 </style>
