@@ -6,8 +6,8 @@ export default {
     addFavorite(state, beer) {
       state.favorites.push(beer);
     },
-    removeFavorite(state, beer) {
-      const index = state.favorites.findIndex((favorite) => favorite.id === beer.id);
+    removeFavorite(state, id) {
+      const index = state.favorites.findIndex((favorite) => favorite.id === id);
       state.favorites.splice(index, 1);
     },
     clearFavorites(state) {
@@ -18,13 +18,16 @@ export default {
     addBeerToFavorites({ commit, getters }) {
       commit('addFavorite', getters.beer);
     },
-    removeBeerFromFavorites({ commit, getters }) {
-      commit('removeFavorite', getters.beer);
-      commit('removeFavoriteBeer');
+    removeBeerFromFavorites({ commit, getters }, id) {
+      commit('removeFavorite', id);
+
+      if (getters.beer.id === id) {
+        commit('setFavoriteBeer', false);
+      }
     },
     clearFavoritesBeer({ commit }) {
       commit('clearFavorites');
-      commit('removeFavoriteBeer');
+      commit('setFavoriteBeer', false);
     },
   },
   getters: {

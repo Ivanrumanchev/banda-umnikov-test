@@ -8,18 +8,18 @@
       :class="$style.button"
       type="button"
       name="next"
-      @click="onNextButtonClick"
       :disabled="beerLoading"
+      @click="onNextButtonClick"
     >
       Давай другое!
     </button>
 
     <button
-     :class="$style.button"
+      :class="$style.button"
       type="button"
       name="like"
-      @click="onFavoritesClick"
       :disabled="beerFavorite"
+      @click="onFavoritesClick"
     >
       В избранное
     </button>
@@ -34,17 +34,16 @@ export default {
   methods: {
     onNextButtonClick() {
       this.$store.dispatch('fetchBeer');
-      this.$store.commit('removeFavoriteBeer');
+      this.$store.commit('setFavoriteBeer', false);
     },
     onFavoritesClick() {
       this.$store.dispatch('addBeerToFavorites');
-      this.$store.commit('setFavoriteBeer');
+      this.$store.commit('setFavoriteBeer', true);
     },
   },
   computed: mapGetters(['beerLoading', 'beerFavorite']),
 };
 </script>
 
-<style module lang="scss">
-  @import '@/components/BeerInfoControls/BeerInfoControls.scss';
+<style module lang="scss" src="@/components/BeerInfoControls/BeerInfoControls.scss">
 </style>

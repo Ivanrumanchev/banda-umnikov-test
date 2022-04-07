@@ -15,17 +15,11 @@ export default {
     updateBeer(state, beer) {
       state.beer = beer;
     },
-    setFavoriteBeer(state) {
-      state.isFavorite = true;
+    setFavoriteBeer(state, payload) {
+      state.isFavorite = payload;
     },
-    removeFavoriteBeer(state) {
-      state.isFavorite = false;
-    },
-    stopLoadingBeer(state) {
-      state.isLoadingBeer = false;
-    },
-    beginLoadingBeer(state) {
-      state.isLoadingBeer = true;
+    setLoadingBeer(state, payload) {
+      state.isLoadingBeer = payload;
     },
     setBeerError(state, error) {
       state.beerError = error;
@@ -33,7 +27,7 @@ export default {
   },
   actions: {
     async fetchBeer({ commit }) {
-      commit('beginLoadingBeer');
+      commit('setLoadingBeer', true);
 
       try {
         const response = await fetch(EndPoints.Beer);
@@ -44,16 +38,18 @@ export default {
 
         commit('updateBeer', beer);
         commit('setBeerError', '');
-        commit('stopLoadingBeer');
       } catch (error) {
         commit('setBeerError', error);
-        commit('stopLoadingBeer');
       }
+      commit('setLoadingBeer', false);
     },
   },
   getters: {
     beer(state) {
       return state.beer;
+    },
+    beerId(state) {
+      return state.beer.id;
     },
     beerBrand(state) {
       return state.beer.brand;

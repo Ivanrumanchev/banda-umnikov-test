@@ -1,5 +1,8 @@
 <template>
-  <img :class="[$style.logo, sizeClass]" src="@/assets/img/logo.svg" >
+  <img
+    :class="[$style.logo, sizeClass]"
+    src="@/assets/img/logo.svg"
+  >
 </template>
 
 <script>
@@ -11,6 +14,5 @@ export default {
 };
 </script>
 
-<style module lang="scss">
-  @import '@/components/Logo/Logo.scss';
+<style module lang="scss" src="@/components/Logo/Logo.scss">
 </style>

@@ -1,7 +1,10 @@
 <template>
   <header :class="$style.header">
     <div class="wrapper" :class="$style.wrapper">
-      <Logo :class="$style.logo" :size-class="$style.logoHeader" />
+      <Logo
+        :class="$style.logo"
+        :size-class="$style.logoHeader"
+      />
 
       <MainNav />
     </div>
@@ -21,6 +24,5 @@ export default {
 };
 </script>
 
-<style module lang="scss">
-  @import '@/components/HeaderComponent/HeaderComponent.scss';
+<style module lang="scss" src="@/components/HeaderComponent/HeaderComponent.scss">
 </style>

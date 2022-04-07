@@ -15,45 +15,78 @@ export default {
     isLogged: false,
     isLoadingUser: true,
     userError: '',
+    avatarError: false,
+    avatarURL: '',
   },
   mutations: {
     updateUser(state, user) {
       state.user = user;
     },
-    stopLoadingUser(state) {
-      state.isLoadingUser = false;
-    },
-    beginLoadingUser(state) {
-      state.isLoadingUser = true;
+    setLoadingUser(state, payload) {
+      state.isLoadingUser = payload;
     },
     setUserError(state, error) {
       state.userError = error;
     },
-    login(state) {
-      state.isLogged = true;
+    setLogin(state, payload) {
+      state.isLogged = payload;
     },
-    logout(state) {
-      state.isLogged = false;
+    setAvatarError(state, payload) {
+      state.avatarError = payload;
+    },
+    setAvatarURL(state, url) {
+      state.avatarURL = url;
     },
   },
   actions: {
-    async fetchUser({ commit }) {
-      commit('beginLoadingUser');
-      commit('login');
+    async fetchUser({ commit, dispatch }) {
+      commit('setLoadingUser', true);
+      commit('setLogin', true);
 
       try {
         const response = await fetch(EndPoints.User);
+
         if (!response.ok) {
           throw new Error('Не удалось загрузить данные пользователя. Попробуйте позже.');
         }
+
         const user = await response.json();
 
         commit('updateUser', user);
-        commit('stopLoadingUser');
+
+        dispatch('fetchAvatar');
       } catch (error) {
         commit('setUserError', error);
-        commit('stopLoadingUser');
+        commit('setAvatarError', true);
       }
+
+      commit('setLoadingUser', false);
+    },
+    async fetchAvatar({ commit, state }) {
+      try {
+        const urlAvatar = state.user.avatar;
+
+        const responseAvatar = await fetch(urlAvatar, {
+          method: 'GET',
+        });
+
+        if (!responseAvatar.ok) {
+          throw new Error('Не удалось загрузить аватар пользователя. Попробуйте позже.');
+        }
+
+        const avatar = await responseAvatar.blob();
+        const avatarURL = URL.createObjectURL(avatar);
+
+        commit('setAvatarURL', avatarURL);
+      } catch (err) {
+        commit('setAvatarError', true);
+      }
+    },
+    logout({ commit }) {
+      commit('setLogin', false);
+      commit('setUserError', '');
+      commit('setAvatarError', false);
+      commit('setAvatarURL', '');
     },
   },
   getters: {
@@ -71,7 +104,9 @@ export default {
       return state.user.employment?.title;
     },
     userAvatar(state) {
-      return state.user.avatar;
+      return state.avatarError
+        ? EndPoints.BackupAvatar
+        : state.avatarURL;
     },
     userLoading(state) {
       return state.isLoadingUser;
@@ -81,6 +116,9 @@ export default {
     },
     userLogged(state) {
       return state.isLogged;
+    },
+    userAvatarError(state) {
+      return state.avatarError;
     },
   },
 };

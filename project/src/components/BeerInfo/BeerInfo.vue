@@ -4,7 +4,10 @@
       Пиво на сегодня
     </h2>
 
-    <BeerCard :beer="beer" :status="status" />
+    <BeerCard
+      :beer="beer"
+      :status="status"
+    />
 
     <BeerInfoControls />
   </section>
@@ -23,6 +26,7 @@ export default {
   },
   computed: {
     ...mapGetters([
+      'beerId',
       'beerBrand',
       'beerName',
       'beerAlcohol',
@@ -32,6 +36,7 @@ export default {
     ]),
     beer() {
       return {
+        id: this.beerId,
         brand: this.beerBrand,
         name: this.beerName,
         alcohol: this.beerAlcohol,
@@ -49,6 +54,5 @@ export default {
 };
 </script>
 
-<style module lang="scss">
-  @import '@/components/BeerInfo/BeerInfo.scss';
+<style module lang="scss" src="@/components/BeerInfo/BeerInfo.scss">
 </style>

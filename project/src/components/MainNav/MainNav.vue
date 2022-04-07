@@ -5,7 +5,9 @@
       type="button"
       @click="onButtonClick"
     >
-      <span class="visually-hidden">Открыть меню</span>
+      <span class="visually-hidden">
+        Открыть меню
+      </span>
     </button>
 
     <ul :class="$style.navList" @click="onRouteClick">
@@ -18,7 +20,9 @@
         :to="link.url"
         :exact="link.exact"
       >
-        <a href="#">{{ link.title }}</a>
+        <a href="#">
+          {{ link.title }}
+        </a>
       </router-link>
 
       <router-link
@@ -26,7 +30,12 @@
         :class="$style.navItem"
         :to="logoutLinkUrl"
       >
-        <a href="#" @click="onExitClick">Выход</a>
+        <a
+          href="#"
+          @click="onExitClick"
+        >
+          Выход
+        </a>
       </router-link>
     </ul>
   </nav>
@@ -37,14 +46,23 @@ import { AppRoute } from '@/const';
 
 export default {
   name: 'main-nav',
-  data: () => ({
-    isOpened: false,
-    links: [
-      { title: 'Главная', url: AppRoute.Root, exact: true },
-      { title: 'Избранное', url: AppRoute.Favorites },
-    ],
-    logoutLinkUrl: AppRoute.Login,
-  }),
+  data() {
+    return {
+      isOpened: false,
+      links: [
+        {
+          title: 'Главная',
+          url: AppRoute.Root,
+          exact: true,
+        },
+        {
+          title: 'Избранное',
+          url: AppRoute.Favorites,
+        },
+      ],
+      logoutLinkUrl: AppRoute.Login,
+    };
+  },
   computed: {
     navClass() {
       return {
@@ -61,13 +79,12 @@ export default {
       this.isOpened = false;
     },
     onExitClick() {
-      this.$store.commit('logout');
+      this.$store.dispatch('logout');
       this.$store.dispatch('clearFavoritesBeer');
     },
   },
 };
 </script>
 
-<style module lang="scss">
-  @import '@/components/MainNav/MainNav.scss';
+<style module lang="scss" src="@/components/MainNav/MainNav.scss">
 </style>

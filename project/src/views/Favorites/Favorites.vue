@@ -2,14 +2,31 @@
   <main :class="$style.main">
     <div class="wrapper">
 
-      <h1 :class="$style.title">Понравившееся пиво</h1>
+      <h1 :class="$style.title">
+        Понравившееся пиво
+      </h1>
 
-      <ul v-if="favorites.length !== 0" :class="$style.favoritesList">
-        <li v-for="favorite in favorites" :key="favorite.id">
-          <BeerCard :beer="getBeerProp(favorite)" :status="getStatusProp()" />
+      <ul
+        v-if="favorites.length !== 0"
+        :class="$style.favoritesList"
+      >
+        <li
+          v-for="favorite in favorites"
+          :key="favorite.id"
+        >
+          <BeerCard
+            :beer="getBeerProp(favorite)"
+            :status="getStatusProp()"
+          />
         </li>
       </ul>
-      <p v-else :class="$style.empty" >Пока что ни одного напитка не было добавлено в избранное.</p>
+
+      <p
+        v-else
+        :class="$style.empty"
+      >
+        Пока что ни одного напитка не было добавлено в избранное.
+      </p>
     </div>
   </main>
 
@@ -28,6 +45,7 @@ export default {
   methods: {
     getBeerProp(beer) {
       return {
+        id: beer.id,
         brand: beer.brand,
         name: beer.name,
         alcohol: beer.alcohol,
@@ -44,6 +62,5 @@ export default {
 };
 </script>
 
-<style module lang="scss">
-  @import '@/views/Favorites/Favorites.scss';
+<style module lang="scss" src="@/views/Favorites/Favorites.scss">
 </style>

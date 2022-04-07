@@ -4,19 +4,43 @@
       Информация о пиве
     </h2>
 
-    <Loader v-if="status.loading" :class="$style.cardsList"/>
+    <Loader
+      v-if="status.loading"
+      :class="$style.cardsList"
+    />
+
     <dl v-else :class="$style.cardsList">
-      <dt :class="$style.category">Brand</dt>
-      <dd :class="$style.description">{{ beer.brand }}</dd>
+      <dt :class="$style.category">
+        Brand
+      </dt>
 
-      <dt :class="$style.category">Name</dt>
-      <dd :class="$style.description">{{ beer.name }}</dd>
+      <dd :class="$style.description">
+        {{ beer.brand }}
+      </dd>
 
-      <dt :class="$style.category">Alcohol</dt>
-      <dd :class="$style.description">{{ beer.alcohol }}</dd>
+      <dt :class="$style.category">
+        Name
+      </dt>
+
+      <dd :class="$style.description">
+        {{ beer.name }}
+      </dd>
+
+      <dt :class="$style.category">
+        Alcohol
+      </dt>
+
+      <dd :class="$style.description">
+        {{ beer.alcohol }}
+      </dd>
     </dl>
 
-    <p v-if="status.error" :class="$style.errorMessage">{{ status.error }}</p>
+    <p
+      v-if="status.error"
+      :class="$style.errorMessage"
+    >
+      {{ status.error }}
+    </p>
 
     <button
       v-if="beer.isFavorite"
@@ -35,6 +59,7 @@ export default {
   name: 'beer-card',
   props: {
     beer: {
+      id: Number,
       brand: String,
       name: String,
       alcohol: String,
@@ -50,12 +75,11 @@ export default {
   },
   methods: {
     onFavoriteButtonClick() {
-      this.$store.dispatch('removeBeerFromFavorites');
+      this.$store.dispatch('removeBeerFromFavorites', this.beer.id);
     },
   },
 };
 </script>
 
-<style module lang="scss">
-  @import '@/components/BeerCard/BeerCard.scss';
+<style module lang="scss" src="@/components/BeerCard/BeerCard.scss">
 </style>

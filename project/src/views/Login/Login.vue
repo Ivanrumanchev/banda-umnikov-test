@@ -1,7 +1,11 @@
 <template>
   <main :class="$style.main">
     <div :class="$style.wrapper" class="wrapper">
-      <Logo :class="$style.logo" :size-class="$style.logoLogin"  />
+      <Logo
+        :class="$style.logo"
+        :size-class="$style.logoLogin"
+      />
+
       <router-link
         :class="$style.begin"
         :to="mainLinkUrl"
@@ -24,9 +28,11 @@ import { AppRoute } from '@/const';
 
 export default {
   name: 'logo',
-  data: () => ({
-    mainLinkUrl: AppRoute.Root,
-  }),
+  data() {
+    return {
+      mainLinkUrl: AppRoute.Root,
+    };
+  },
   components: {
     Logo,
   },
@@ -39,6 +45,5 @@ export default {
 };
 </script>
 
-<style module lang="scss">
-  @import '@/views/Login/Login.scss';
+<style module lang="scss" src="@/views/Login/Login.scss">
 </style>
