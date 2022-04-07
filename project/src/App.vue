@@ -24,5 +24,5 @@ export default {
 </script>
 
 <style lang="scss">
-  @import '@/components/app/App.scss';
+  @import '@/App.scss';
 </style>
